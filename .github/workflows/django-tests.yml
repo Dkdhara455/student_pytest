@@ -36,7 +36,6 @@ jobs:
         env:
           DJANGO_SETTINGS_MODULE: student_project.settings
         run: |
-          cd student_project
           python manage.py migrate
-          pytest
+          pytest -v 
           
