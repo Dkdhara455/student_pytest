@@ -22,8 +22,9 @@ jobs:
 
     - name: Install Dependencies
       run: |
+        ls -la   # Debug: List files
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip install -r ./requirements.txt
         pip install pytest-cov coverage
 
     - name: Apply Migrations
