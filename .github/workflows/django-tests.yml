@@ -1,4 +1,4 @@
-name: Django Tests (SQLite with Coverage)
+name: Django Tests (SQLite)
 
 on:
   push:
@@ -11,26 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout Code
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.11'
-        cache: 'pip'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
 
-    - name: Install Dependencies
-      run: |
-        ls -la   # Debug: List files
-        python -m pip install --upgrade pip
-        pip install -r ./requirements.txt
-        pip install pytest-cov coverage
+      - name: Install dependencies
+        run: |
+          ls -la   # Debug to see if files exist
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-django
 
-    - name: Apply Migrations
-      run: |
-        python manage.py migrate
-
-    - name: Run Tests with Coverage
-      run: |
-        pytest --cov=students --cov-report=term-missing --disable-warnings -v
+      - name: Run Django Tests
+        env:
+          DJANGO_SETTINGS_MODULE: student_project.settings
+        run: |
+          python manage.py migrate
+          pytest
