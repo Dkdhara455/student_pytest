@@ -1,4 +1,4 @@
-name: Django Tests (SQLite)
+name: Django Tests (SQLite with Coverage)
 
 on:
   push:
@@ -18,16 +18,18 @@ jobs:
       uses: actions/setup-python@v4
       with:
         python-version: '3.11'
+        cache: 'pip'
 
     - name: Install Dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install pytest-cov coverage
 
     - name: Apply Migrations
       run: |
         python manage.py migrate
 
-    - name: Run Tests
+    - name: Run Tests with Coverage
       run: |
-        pytest -v --disable-warnings
+        pytest --cov=students --cov-report=term-missing --disable-warnings -v
