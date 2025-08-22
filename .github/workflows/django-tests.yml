@@ -33,7 +33,7 @@ jobs:
             pytest-django
 
       - name: Run migrations and tests
-        working-directory: ./student_project
+        working-directory: student_pytest
         env:
           DJANGO_SETTINGS_MODULE: student_project.settings
         run: |
