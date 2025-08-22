@@ -21,12 +21,12 @@ jobs:
 
       - name: Install dependencies
         run: |
-          ls -la   # Debug to see if files exist
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          pip install pytest pytest-django
+            python -m pip install --upgrade pip
+            pip install -r requirements.txt
+            pip install pytest pytest-djang
 
       - name: Run Django Tests
+        working-directory: student_project
         env:
           DJANGO_SETTINGS_MODULE: student_project.settings
         run: |
