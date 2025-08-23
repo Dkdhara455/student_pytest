@@ -19,8 +19,9 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Debug files
+      - name: Show repo files
         run: |
+          pwd
           ls -R
 
       - name: Install dependencies
@@ -33,10 +34,11 @@ jobs:
             pytest-django
 
       - name: Run migrations and tests
-        working-directory: student_project
+        # working-directory: student_project
         env:
           DJANGO_SETTINGS_MODULE: student_project.settings
         run: |
+          cd student_project
           python manage.py migrate
           pytest -v 
           
