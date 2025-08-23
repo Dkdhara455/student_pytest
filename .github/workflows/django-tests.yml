@@ -14,8 +14,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          path: /home/runner/work/student_pytest
-
+          path: .
+          
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
