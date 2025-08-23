@@ -14,12 +14,12 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
         with:
-          path: student_project
+          path: .
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
       - name: Show repo files
         run: |
@@ -43,5 +43,5 @@ jobs:
       #     pytest -v 
       - name: Run migrations
         working-directory: student_project
-        run: python manage.py migrate
-          
+        run:  |
+          pytest
