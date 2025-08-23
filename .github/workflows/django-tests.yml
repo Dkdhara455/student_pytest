@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          path: ../
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -34,11 +36,9 @@ jobs:
             pytest-django
 
       - name: Run migrations and tests
-        working-directory: /home/runner/work/student_pytest
+        working-directory: student_project
         env:
           DJANGO_SETTINGS_MODULE: student_project.settings
         run: |
-          cd student_pytest/student_project
-          python manage.py migrate
           pytest -v 
           
