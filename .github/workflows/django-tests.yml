@@ -36,13 +36,7 @@ jobs:
             djangorestframework==3.14.0 \
             pytest \
             pytest-django
-
-      # - name: Run migrations and tests
-      #   working-directory: ./student_project
-      #   env:
-      #     DJANGO_SETTINGS_MODULE: student_project.settings
-      #   run: |
-      #     pytest -v 
+            
       - name: Run migrations
         run: python manage.py migrate
 
