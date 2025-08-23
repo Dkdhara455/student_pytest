@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+        with:
+          path: student_project
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -40,5 +42,6 @@ jobs:
       #   run: |
       #     pytest -v 
       - name: Run migrations
-        run: python $GITHUB_WORKSPACE/student_project/manage.py migrate
+        working-directory: student_project
+        run: python manage.py migrate
           
