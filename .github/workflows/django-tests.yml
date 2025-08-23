@@ -21,9 +21,11 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Show repo files
+      - name: Debug structure
         run: |
+          echo "Current Directory:"
           pwd
+          echo "Contents:"
           ls -R
 
       - name: Install dependencies
@@ -42,9 +44,9 @@ jobs:
       #   run: |
       #     pytest -v 
       - name: Run migrations
-        working-directory: student_pytest/student_project
+        working-directory: student_project
         run: python manage.py migrate
       - name: Run tests
-        working-directory: student_pytest/student_project
+        working-directory: student_project
         run:  |
           pytest
